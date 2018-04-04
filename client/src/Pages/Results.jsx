@@ -1,16 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import data from  '../../../';
+
+const { API_KEY } =
+const API_URL = ''
 
 class Results extends Component {
  state = {
    query: '',
+   results: []
  }
 
  handleInputChange = () => {
    this.setState({
      query: this.search.value
-   })
- }
-
+   }, () => {
+     if (this.state.query && this.state.length >1) {
+       if (this.state.query.length % 2 === ) {
+        this.getInfo()
+       }
+   }else if (!this.state.query){
+     Console.log(done)
+    }
+  })
+}
  getInfo = () => {
   axios.get(`${API_URL}?api_key=${API_KEY}&prefix=${this.state.query}&limit=7`)
     .then(({ data }) => {
@@ -24,9 +36,7 @@ class Results extends Component {
    return (
      <form>
        <input
-         placeholder="Search for..."
-         ref={input => this.search = input}
-         onChange={this.handleInputChange}
+
        />
        <p>{this.state.query}</p>
      </form>
@@ -34,4 +44,4 @@ class Results extends Component {
  }
 }
 
-export default Search
+export default Results
